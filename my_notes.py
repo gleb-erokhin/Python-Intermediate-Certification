@@ -52,7 +52,19 @@ def change_data(my_list):
     write_data(my_list)
 
 
+def write_data(my_list):  # функция записи данный в файл
+    with open('notes.csv', 'w', newline="", encoding='utf-8') as w_file:
+        file_writer = csv.writer(w_file, delimiter=",")
+        file_writer.writerows(my_list)
 
+
+def read_data():  # основная функция чтения данных из файла
+    my_list = []
+    with open('notes.csv', 'r', encoding='utf-8') as file:
+        reader = csv.reader(file)
+        for line in reader:
+            my_list.append(line)
+        return my_list
 
 
 
