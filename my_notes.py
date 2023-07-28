@@ -67,6 +67,20 @@ def read_data():  # основная функция чтения данных и
         return my_list
 
 
+def print_data(data):
+    for el in data:
+        # разделяем по , и распаковывем список для визуала
+        print(*el)
 
+
+def print_list(data):  # позволяет увидеть список на любой стадии
+    print(data)
+
+
+def main():
+    my_list = read_data()
+    menu(my_list)
+
+    
 if __name__ == '__main__':
     main()
