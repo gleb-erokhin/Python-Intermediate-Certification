@@ -81,6 +81,6 @@ def main():
     my_list = read_data()
     menu(my_list)
 
-    
+
 if __name__ == '__main__':
     main()
