@@ -25,5 +25,14 @@ def menu(list):
             routine = False
             break
 
+
+def add_data(my_list):
+    print("(Запись вводится через пробел)")
+    # добавляем новую запись в конец
+    my_list.append(input("Enter data \n").split())
+    write_data(my_list)  # записываем данные
+    menu(my_list)  # вызываем меню
+
+    
 if __name__ == '__main__':
     main()
