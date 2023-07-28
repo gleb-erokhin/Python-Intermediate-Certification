@@ -33,6 +33,28 @@ def add_data(my_list):
     write_data(my_list)  # записываем данные
     menu(my_list)  # вызываем меню
 
-    
+
+def change_data(my_list):
+    stop = True  # переменная для остановки цикла
+    while stop:
+        edit = int(input("chose record: \n"))  # выбираем запись в приложении Заметки
+        for i in range(len(my_list)):  # цикл для прохода по записям и поиск порядкового номера
+            if int(my_list[i][0]) == edit:  # находим нужный вложенный список по номеру заметки
+                # удаляем вложенный список по индексу
+                my_list.remove(my_list[i])
+                # вставляем на место удаленного по индексу новый вводимый список
+                my_list.insert(i, input("Enter new data \n").split())
+                stop = False  # так как все сделано останавливаем while
+                break  # выход из цикла
+            else:
+                continue  # нужен для продолжения поиска по введнному номеру заметки
+    # так как вышли из цикла, записываем новые данные в файл
+    write_data(my_list)
+
+
+
+
+
+
 if __name__ == '__main__':
     main()
