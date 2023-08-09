@@ -13,7 +13,8 @@ def menu(list):
         print("1 - Print all notes")
         print("2 - Add note")
         print("3 - Change note")
-        print("4 - Exit")
+        print("4 - Delete note")
+        print("5 - Exit")
         command = int(input("Choose number \n"))
         print("")
         if command == 1:  # повторная печать после изменений
@@ -23,7 +24,9 @@ def menu(list):
             add_data(list)  # для добавления записи
         elif command == 3:
             change_data(list)  # для изменения записи
-        elif command == 4:  # выход из программы
+        elif command == 4:  # для удаления записи
+            del_data(list)
+        elif command == 5:  # выход из программы
             routine = False
             break
 
@@ -53,6 +56,21 @@ def change_data(my_list):
     # так как вышли из цикла, записываем новые данные в файл
     write_data(my_list)
 
+def del_data(my_list):
+    stop = True  # переменная для остановки цикла
+    while stop:
+        edit = int(input("chose record for delete: \n"))  # выбираем запись для удаления
+        for i in range(len(my_list)):  # цикл для прохода по записям и поиск порядкового номера
+            if int(my_list[i][0]) == edit:  # находим нужный вложенный список по номеру заметки
+                # удаляем вложенный список по индексу
+                my_list.remove(my_list[i])
+                stop = False  # так как все сделано останавливаем while
+                break  # выход из цикла
+            else:
+                continue  # нужен для продолжения поиска по введнному номеру заметки
+    # так как вышли из цикла, записываем новые данные в файл
+    print("Data deleted")
+    write_data(my_list)
 
 def write_data(my_list):  # функция записи данный в файл
     with open('notes.csv', 'w', newline="", encoding='utf-8') as w_file:
